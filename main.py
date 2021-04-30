@@ -9,6 +9,8 @@ import sales_api
 from api_date_checker_and_parser import parse_str_to_date
 from flask_cors import CORS
 
+import argparse
+
 DEFAULT_LIMIT = "1 per second"
 CACHE_TYPE = "simple"
 CACHE_TIMEOUT = 7200
@@ -86,5 +88,23 @@ api.add_resource(TwoDatesCurrencyRates, "/currency-rates/<string:currency>/<stri
 api.add_resource(OneDateSalesForCurrency, "/sales/<string:currency>/<string:date>")
 api.add_resource(TwoDatesSalesForCurrency, "/sales/<string:currency>/<string:start_date>/<string:end_date>")
 
+
+def get_args():
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+
+    parser.add_argument(
+        "-p",
+        "--port",
+        type=int,
+        default=5000,
+        help="Enter the port number on which the server will run.",
+    )
+
+    return parser.parse_args()
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    args = get_args()
+    app.run(port=args.port)
