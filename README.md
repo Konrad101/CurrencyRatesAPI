@@ -1,6 +1,3 @@
-# CurrencyRatesAPI
-
-
 # Project requirements
 
 Flask==1.1.2
