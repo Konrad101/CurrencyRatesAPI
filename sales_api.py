@@ -5,8 +5,6 @@ from api_date_checker_and_parser import parse_str_to_date, parse_datetime_to_str
 from currencies_api import API_BASE_CURRENCY
 from sales_database import SalesDatabaseManager, SALES_BASE_CURRENCY
 
-SERVER = 'DESKTOP-LKE4F79'
-DATABASE_NAME = 'AdventureWorks2019'
 
 MIN_AVAILABLE_DATE = datetime(2011, 5, 31)
 MAX_AVAILABLE_DATE = datetime(2014, 6, 30)
@@ -72,7 +70,7 @@ def create_json_from_sales(sales, currency):
 
 
 def get_sales_for_date_and_currency(currency, date_from, date_to):
-    database_manager = SalesDatabaseManager(SERVER, DATABASE_NAME)
+    database_manager = SalesDatabaseManager()
     update_currency_sales(database_manager, API_BASE_CURRENCY, date_from, date_to)
     if currency != API_BASE_CURRENCY:
         update_currency_sales(database_manager, currency, date_from, date_to)

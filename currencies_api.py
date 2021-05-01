@@ -4,9 +4,6 @@ import currencies
 from api_date_checker_and_parser import parse_datetime_to_str, parse_str_to_date, date_is_correct
 from currencies_database import CurrenciesDatabaseManager
 
-SERVER = 'DESKTOP-LKE4F79'
-DATABASE_NAME = 'AdventureWorks2019'
-
 MIN_AVAILABLE_YEAR = 2002
 API_BASE_CURRENCY = 'PLN'
 
@@ -42,7 +39,7 @@ def currency_is_available(currency):
 
 
 def get_currency_rates(currency, date_from, date_to):
-    database_manager = CurrenciesDatabaseManager(SERVER, DATABASE_NAME)
+    database_manager = CurrenciesDatabaseManager()
     db_rates = database_manager.get_currency_rates(currency, date_from, date_to)
     if len(db_rates) == 0:
         database_manager.insert_currency_data_to_table(currency, date_from, date_to)

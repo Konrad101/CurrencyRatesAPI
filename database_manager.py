@@ -2,9 +2,12 @@ from abc import ABC
 
 import pyodbc
 
+DATABASE_SERVER = 'DESKTOP-LKE4F79'
+DATABASE_NAME = 'AdventureWorks2019'
+
 
 class DatabaseManager(ABC):
-    def __init__(self, server, database):
+    def __init__(self, server=DATABASE_SERVER, database=DATABASE_NAME):
         self.min_available_year = 2002
         self.conn = pyodbc.connect(
             "Driver={SQL Server Native Client 11.0};"
